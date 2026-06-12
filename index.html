@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solenoid Capital | Precision Investment Management</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -12,30 +11,54 @@
                 extend: {
                     colors: {
                         solenoid: {
-                            black: '#0A0A0A',   // Deep Carbon Black
-                            panel: '#141414',   // Slightly lighter for cards
+                            black: '#0A0A0A',   // Deep Carbon Black background
+                            panel: '#141414',   // Lighter panel black
                             orange: '#FF8000',  // McLaren Papaya Orange
-                            silver: '#C4C4CC',  // Metallic Silver
+                            "bright-orange": "#FF9F1A", // Brighter, glowing orange accent
+                            silver: '#D9D9E0',  // Elevated Metallic Silver (cleared of grayness)
+                            "piercing-white": "#FFFFFF", // Standard pure white with piercing clarity
                         }
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Enhanced text shadow for maximum visual brightness in hero section */
+        .brighter-white {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Continuous Shimmer effect for HELIX STRAND with enhanced sparkle */
+        .helix-shimmer {
+            background-size: 200% auto;
+            animation: helixShimmer 4s linear infinite;
+        }
+        @keyframes helixShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: -200% 50%; }
+        }
+    </style>
 </head>
 <body class="bg-solenoid-black text-solenoid-silver font-sans antialiased selection:bg-solenoid-orange selection:text-black">
 
-    <!-- Navigation -->
-    <nav class="border-b border-white/10 bg-solenoid-black/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <!-- Logo: Sun/Channel Motif -->
-                <div class="h-8 w-8 rounded bg-gradient-to-br from-solenoid-orange to-orange-600 flex items-center justify-center font-bold text-black text-xl shadow-[0_0_15px_rgba(255,128,0,0.5)]">
-                    Σ
+    <nav class="border-b border-white/10 bg-solenoid-black/80 backdrop-blur-md sticky top-0 z-50 h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between w-full">
+            <div class="flex items-center space-x-3 h-full">
+                <div class="flex items-center space-x-0.5 h-full pt-4">
+                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-auto">
+                        <defs>
+                            <pattern id="solenoidCoilNav" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <circle cx="2" cy="2" r="1.5" stroke="#D9D9E0" stroke-width="0.5" fill="none" />
+                            </pattern>
+                        </defs>
+                        <path d="M0 4V2H2V0H4V2H2V4V20V22H4V24H2V22H0V20V4Z" fill="url(#solenoidCoilNav)" stroke="#D9D9E0" stroke-width="0.5"/>
+                        <path d="M36 4V2H38V0H40V2H38V4V20V22H40V24H38V22H36V20V4Z" fill="url(#solenoidCoilNav)" stroke="#D9D9E0" stroke-width="0.5"/>
+                    </svg>
+                    <span class="text-xl font-bold tracking-tight text-white pl-2">SOLENOID <span class="text-solenoid-silver font-light pl-1">CAPITAL</span></span>
                 </div>
-                <span class="text-xl font-bold tracking-tight text-white">SOLENOID <span class="text-solenoid-silver font-light">CAPITAL</span></span>
             </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-solenoid-silver">
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-solenoid-silver pt-4">
                 <a href="#thesis" class="hover:text-solenoid-orange transition-colors">Our Thesis</a>
                 <a href="#strategies" class="hover:text-solenoid-orange transition-colors">Strategies</a>
                 <a href="#contact" class="hover:text-solenoid-orange transition-colors">Contact</a>
@@ -43,17 +66,22 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="relative overflow-hidden py-24 lg:py-32 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-widest text-solenoid-orange bg-solenoid-orange/10 px-3 py-1 rounded-full border border-solenoid-orange/20">
                     Quantitative & Strategic Capital
                 </span>
-                <h1 class="mt-6 text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-none">
-                    Powering momentum through <span class="text-transparent bg-clip-text bg-gradient-to-r from-solenoid-orange to-orange-400">disciplined engineering.</span>
+                
+                <h1 class="mt-6 text-4xl sm:text-6xl font-extrabold brighter-white leading-none tracking-tight">
+                    <span class="text-solenoid-piercing-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">Powering</span> 
+                    <span class="text-solenoid-piercing-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">momentum</span> 
+                    <span class="text-solenoid-piercing-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">through</span>
+                    <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-solenoid-orange via-solenoid-orange to-solenoid-bright-orange drop-shadow-[0_0_25px_rgba(255,128,0,0.5)] brighter-white pr-4">disciplined engineering.</span>
                 </h1>
-                <p class="mt-6 text-lg text-solenoid-silver leading-relaxed">
+                
+                <p class="mt-6 text-lg text-solenoid-silver leading-relaxed pr-12">
                     Solenoid Capital applies rigorous quantitative models and structured capital deployment to identify, accelerate, and scale high-conviction market opportunities.
                 </p>
                 <div class="mt-10 flex flex-wrap gap-4">
@@ -66,18 +94,16 @@
                 </div>
             </div>
         </div>
-        <!-- Abstract Background Glow (Orange) -->
         <div class="absolute top-1/2 right-10 -translate-y-1/2 w-96 h-96 bg-solenoid-orange/20 rounded-full blur-[100px] pointer-events-none"></div>
     </header>
 
-    <!-- Investment Thesis Section -->
     <section id="thesis" class="py-24 max-w-7xl mx-auto px-6 border-b border-white/10">
         <div class="grid lg:grid-cols-3 gap-12 items-start">
             <div>
                 <h2 class="text-xs font-bold uppercase tracking-widest text-solenoid-orange">The Solenoid Edge</h2>
-                <p class="mt-3 text-3xl font-bold text-white tracking-tight">Our Investment Thesis</p>
+                <p class="mt-3 text-3xl font-bold text-white tracking-tight brighter-white">Our Investment Thesis</p>
             </div>
-            <div class="lg:col-span-2 space-y-8 text-solenoid-silver leading-relaxed text-lg">
+            <div class="lg:col-span-2 space-y-8 text-solenoid-silver leading-relaxed text-lg pr-12 pl-12">
                 <p>
                     Much like a physical solenoid concentrates magnetic force to create precise, powerful linear motion, <strong class="text-white">Solenoid Capital</strong> concentrates data, technology, and capital to drive clean, directional asset growth.
                 </p>
@@ -87,93 +113,92 @@
             </div>
         </div>
     </section>
-<section class="py-24 bg-solenoid-black border-b border-white/10 relative overflow-hidden">
+
+    <section id="strategies" class="py-24 bg-[#0F0F0F] border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 pt-4">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-solenoid-orange">Allocation Focus</h2>
+                <p class="mt-3 text-3xl font-bold text-white tracking-tight brighter-white">Core Strategic Pillars</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 rounded bg-solenoid-panel border border-white/5 hover:border-solenoid-orange/60 transition-all group drop-shadow-sm">
+                    <div class="w-10 h-10 rounded bg-solenoid-orange/10 flex items-center justify-center text-solenoid-orange mb-6 font-bold group-hover:bg-solenoid-orange group-hover:text-black transition-colors">01</div>
+                    <h3 class="text-xl font-bold text-white mb-3 brighter-white">Quantitative Alpha</h3>
+                    <p class="text-solenoid-silver text-sm leading-relaxed pr-6">Algorithmic and systematic execution models engineered to capture microscopic and structural market mispricings.</p>
+                </div>
+                <div class="p-8 rounded bg-solenoid-panel border border-white/5 hover:border-solenoid-orange/60 transition-all group drop-shadow-sm">
+                    <div class="w-10 h-10 rounded bg-solenoid-orange/10 flex items-center justify-center text-solenoid-orange mb-6 font-bold group-hover:bg-solenoid-orange group-hover:text-black transition-colors">02</div>
+                    <h3 class="text-xl font-bold text-white mb-3 brighter-white">Growth Equity</h3>
+                    <p class="text-solenoid-silver text-sm leading-relaxed pr-6">Direct capital deployment into late-stage technological infrastructure and companies exhibiting undeniable operational velocity.</p>
+                </div>
+                <div class="p-8 rounded bg-solenoid-panel border border-white/5 hover:border-solenoid-orange/60 transition-all group drop-shadow-sm">
+                    <div class="w-10 h-10 rounded bg-solenoid-orange/10 flex items-center justify-center text-solenoid-orange mb-6 font-bold group-hover:bg-solenoid-orange group-hover:text-black transition-colors">03</div>
+                    <h3 class="text-xl font-bold text-white mb-3 brighter-white">Risk Arbitrage</h3>
+                    <p class="text-solenoid-silver text-sm leading-relaxed pr-6">Highly calculated, hedged strategies built to extract predictable yield out of complex corporate restructuring events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-solenoid-black border-b border-white/10 relative overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-solenoid-silver/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <div class="inline-flex items-center justify-center space-x-2 mb-6">
+            <div class="inline-flex items-center justify-center space-x-2 mb-6 pt-4">
                 <span class="w-2 h-2 rounded-full bg-solenoid-silver shadow-[0_0_8px_rgba(196,196,204,0.8)] animate-pulse"></span>
                 <h2 class="text-xs font-bold uppercase tracking-widest text-solenoid-silver">Proprietary Infrastructure</h2>
                 <span class="w-2 h-2 rounded-full bg-solenoid-silver shadow-[0_0_8px_rgba(196,196,204,0.8)] animate-pulse"></span>
             </div>
             
-            <p class="text-4xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
+            <p class="text-4xl md:text-5xl font-extrabold tracking-tight mb-8 text-white brighter-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                 Powered by <br class="md:hidden" />
-                <span class="text-transparent bg-clip-text bg-gradient-to-br from-gray-100 via-solenoid-silver to-gray-500 drop-shadow-[0_0_15px_rgba(196,196,204,0.4)]">
+                
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-solenoid-silver to-gray-500 brighter-white pr-4 helix-shimmer relative">
                     HELIX STRAND
+                    <span class="absolute -right-2 top-0 text-[0.3em] text-white brightness-200 pr-2">✨</span>
+                    <span class="absolute right-0 bottom-1 text-[0.2em] text-white brightness-200">✨</span>
                 </span>
             </p>
             
-            <p class="max-w-3xl mx-auto text-lg text-solenoid-silver leading-relaxed bg-[#141414]/50 border border-white/5 p-8 rounded backdrop-blur-sm">
+            <p class="max-w-3xl mx-auto text-lg text-solenoid-silver leading-relaxed bg-[#141414]/50 border border-white/5 p-8 rounded backdrop-blur-sm pr-12 pl-12 shadow-[0_0_30px_rgba(196,196,204,0.2)]">
                 Engineered as our proprietary, closed-loop API, <strong class="text-white">HELIX STRAND</strong> delivers uncompromising security and microscopic latency when executing complex quantitative sequences. By weaving together predictive data pipelines and strict risk-mitigation protocols, this metallic-tier architecture ensures high-performance returns on par with the most elite global funds.
             </p>
         </div>
     </section>
-    <!-- Core Strategies Section -->
-    <section id="strategies" class="py-24 bg-[#0F0F0F] border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-solenoid-orange">Allocation Focus</h2>
-                <p class="mt-3 text-3xl font-bold text-white tracking-tight">Core Strategic Pillars</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Pillar 1 -->
-                <div class="p-8 rounded bg-solenoid-panel border border-white/5 hover:border-solenoid-orange/50 transition-all group">
-                    <div class="w-10 h-10 rounded bg-solenoid-orange/10 flex items-center justify-center text-solenoid-orange mb-6 font-bold group-hover:bg-solenoid-orange group-hover:text-black transition-colors">01</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Quantitative Alpha</h3>
-                    <p class="text-solenoid-silver text-sm leading-relaxed">Algorithmic and systematic execution models engineered to capture microscopic and structural market mispricings.</p>
-                </div>
-                <!-- Pillar 2 -->
-                <div class="p-8 rounded bg-solenoid-panel border border-white/5 hover:border-solenoid-orange/50 transition-all group">
-                    <div class="w-10 h-10 rounded bg-solenoid-orange/10 flex items-center justify-center text-solenoid-orange mb-6 font-bold group-hover:bg-solenoid-orange group-hover:text-black transition-colors">02</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Growth Equity</h3>
-                    <p class="text-solenoid-silver text-sm leading-relaxed">Direct capital deployment into late-stage technological infrastructure and companies exhibiting undeniable operational velocity.</p>
-                </div>
-                <!-- Pillar 3 -->
-                <div class="p-8 rounded bg-solenoid-panel border border-white/5 hover:border-solenoid-orange/50 transition-all group">
-                    <div class="w-10 h-10 rounded bg-solenoid-orange/10 flex items-center justify-center text-solenoid-orange mb-6 font-bold group-hover:bg-solenoid-orange group-hover:text-black transition-colors">03</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Risk Arbitrage</h3>
-                    <p class="text-solenoid-silver text-sm leading-relaxed">Highly calculated, hedged strategies built to extract predictable yield out of complex corporate restructuring events.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="py-24 max-w-7xl mx-auto px-6">
         <div class="max-w-2xl mx-auto text-center">
             <h2 class="text-xs font-bold uppercase tracking-widest text-solenoid-orange">Investor Relations</h2>
-            <p class="mt-3 text-3xl font-bold text-white tracking-tight">Initiate Communication</p>
+            <p class="mt-3 text-3xl font-bold text-white tracking-tight brighter-white">Initiate Communication</p>
             
-            <form class="mt-10 text-left space-y-4">
+            <form class="mt-10 text-left space-y-4 pt-4 pr-4 pl-4">
                 <div>
                     <label class="block text-xs uppercase font-semibold text-solenoid-silver mb-2">Entity or Individual Name</label>
-                    <input type="text" required class="w-full bg-solenoid-panel border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors">
+                    <input type="text" required class="w-full bg-solenoid-panel border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors pr-12 pl-4">
                 </div>
                 <div>
                     <label class="block text-xs uppercase font-semibold text-solenoid-silver mb-2">Institutional Email</label>
-                    <input type="email" required class="w-full bg-solenoid-panel border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors">
+                    <input type="email" required class="w-full bg-solenoid-panel border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors pr-12 pl-4">
                 </div>
                 <div>
                     <label class="block text-xs uppercase font-semibold text-solenoid-silver mb-2">Inquiry</label>
-                    <textarea rows="4" required class="w-full bg-solenoid-panel border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors" placeholder="State allocation parameters..."></textarea>
+                    <textarea rows="4" required class="w-full bg-solenoid-panel border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors pr-12 pl-4" placeholder="State allocation parameters..."></textarea>
                 </div>
-                <button type="submit" class="w-full py-3 bg-white/5 text-white font-semibold rounded hover:bg-solenoid-orange hover:text-black transition-all text-sm tracking-wide border border-white/10 hover:border-solenoid-orange">
+                <button type="submit" class="w-full py-3 bg-white/5 text-white font-semibold rounded hover:bg-solenoid-orange hover:text-black transition-all text-sm tracking-wide border border-white/10 hover:border-solenoid-orange mt-8 shadow-sm">
                     Submit Request
                 </button>
             </form>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-[#050505] border-t border-white/10 py-12 text-xs text-solenoid-silver">
         <div class="max-w-7xl mx-auto px-6 space-y-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <p>&copy; 2026 Solenoid Capital. All rights reserved.</p>
-                <p class="tracking-wide text-solenoid-orange font-bold">SECURITY // INTEGRITY // COMPLIANCE</p>
+                <p class="tracking-wide text-solenoid-bright-orange font-bolddrop-shadow-sm pr-4">SECURITY // INTEGRITY // COMPLIANCE</p>
             </div>
-            <p class="leading-relaxed opacity-60">
+            <p class="leading-relaxed opacity-60 pr-12">
                 <strong>Legal Disclaimer:</strong> Solenoid Capital is an investment management entity. Content on this website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security, investment product, or service. Past performance is no guarantee of future returns. Investments involve significant risks, including the potential loss of principal capital.
             </p>
         </div>
