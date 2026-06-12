@@ -11,55 +11,68 @@
                 extend: {
                     colors: {
                         solenoid: {
-                            black: '#0A0A0A',   // Deep Carbon Black background
-                            panel: '#141414',   // Lighter panel black
+                            black: '#0A0A0A',   // Deep Carbon Black background (Pure)
+                            panel: '#0A0A0A',   // Return to pure black, no panel separation
                             orange: '#FF8000',  // McLaren Papaya Orange
-                            silver: '#C4C4CC',  // Original Metallic Silver
+                            silver: '#D9D9E0',  // Elevated Metallic Silver (cleared of grayness)
+                            "piercing-white": "#FFFFFF", // Standard pure white
                         }
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Shimmer effect for HELIX STRAND text */
+        .helix-shimmer {
+            background-size: 200% auto;
+            animation: helixShimmer 4s linear infinite;
+        }
+        @keyframes helixShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: -200% 50%; }
+        }
+    </style>
 </head>
 <body class="bg-solenoid-black text-solenoid-silver font-sans antialiased selection:bg-solenoid-orange selection:text-black">
 
-    <nav class="border-b border-white/10 bg-solenoid-black/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
+    <nav class="border-b border-white/10 bg-solenoid-black/80 backdrop-blur-md sticky top-0 z-50 h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between w-full">
+            <div class="flex items-center space-x-3 h-full">
                 <div class="h-8 w-8 rounded bg-gradient-to-br from-solenoid-orange to-orange-600 flex items-center justify-center font-bold text-black text-xl shadow-[0_0_15px_rgba(255,128,0,0.5)]">
                     Σ
                 </div>
-                <span class="text-xl font-bold tracking-tight text-white">SOLENOID <span class="text-solenoid-silver font-light">CAPITAL</span></span>
+                <span class="text-xl font-bold tracking-tight text-white pl-1">SOLENOID <span class="text-solenoid-silver font-light pl-1">CAPITAL</span></span>
             </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-solenoid-silver">
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-solenoid-silver pt-4">
                 <a href="#thesis" class="hover:text-solenoid-orange transition-colors">Our Thesis</a>
                 <a href="#strategies" class="hover:text-solenoid-orange transition-colors">Strategies</a>
+                <a href="#helix" class="hover:text-solenoid-orange transition-colors">Proprietary Tech</a>
                 <a href="#contact" class="hover:text-solenoid-orange transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
-    <header class="relative overflow-hidden py-24 lg:py-32 border-b border-white/10">
-        <div class="absolute inset-0 z-0 h-full w-full pointer-events-none">
-            <canvas id="solenoidHelixCanvas" class="h-full w-full opacity-60"></canvas>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <header class="relative overflow-hidden py-24 lg:py-32 border-b border-white/10 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid md:grid-cols-2 gap-12 items-center">
+            
             <div class="max-w-3xl">
                 <span class="text-xs font-bold uppercase tracking-widest text-solenoid-orange bg-solenoid-orange/10 px-3 py-1 rounded-full border border-solenoid-orange/20">
                     Quantitative & Strategic Capital
                 </span>
                 
-                <h1 class="mt-6 text-4xl sm:text-6xl font-extrabold text-white leading-none tracking-tight">
-                    Powering momentum through 
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-solenoid-orange to-orange-600">disciplined engineering.</span>
+                <h1 class="mt-6 text-4xl sm:text-6xl font-extrabold leading-none tracking-tight">
+                    <span class="text-solenoid-piercing-white">Powering</span> 
+                    <span class="text-solenoid-piercing-white">momentum</span> 
+                    <span class="text-solenoid-piercing-white">through</span>
+                    <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-solenoid-orange to-orange-400 drop-shadow-[0_0_15px_rgba(255,128,0,0.3)] pr-4">disciplined engineering.</span>
                 </h1>
                 
                 <p class="mt-6 text-lg text-solenoid-silver leading-relaxed pr-12">
                     Solenoid Capital applies rigorous quantitative models and structured capital deployment to identify, accelerate, and scale high-conviction market opportunities.
                 </p>
-                <div class="mt-10 flex flex-wrap gap-4">
+                <div class="mt-10 flex flex-wrap gap-4 relative z-20">
                     <a href="#contact" class="px-6 py-3 bg-solenoid-orange text-black font-bold rounded hover:bg-orange-500 transition-all text-sm tracking-wide shadow-[0_0_20px_rgba(255,128,0,0.3)] hover:shadow-[0_0_25px_rgba(255,128,0,0.6)]">
                         Institutional Inquiry
                     </a>
@@ -67,6 +80,16 @@
                         Explore Strategy
                     </a>
                 </div>
+            </div>
+
+            <div id="helix-visualization-zone" class="relative w-full aspect-square md:aspect-auto h-full flex items-center justify-center border border-white/5 bg-[#141414]/50 rounded-lg overflow-hidden backdrop-blur-sm shadow-[0_0_50px_rgba(255,128,0,0.1)]">
+                <div class="absolute inset-0 bg-gradient-to-br from-solenoid-orange/10 to-orange-950/20 pointer-events-none"></div>
+                
+                <div class="text-xs font-bold uppercase tracking-widest text-solenoid-orange animate-pulse z-0">
+                    Initializing HELIX STRAND Sequence...
+                </div>
+                
+                <canvas id="helix-viz-canvas" class="absolute inset-0 z-10 w-full h-full"></canvas>
             </div>
         </div>
     </header>
@@ -96,22 +119,44 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-8 rounded bg-solenoid-panel border border-white/5 hover:border-solenoid-orange/60 transition-all group">
+                <div class="p-8 rounded bg-[#1C1C1F] border border-white/5 hover:border-solenoid-orange/60 transition-all group drop-shadow-sm">
                     <div class="w-10 h-10 rounded bg-solenoid-orange/10 flex items-center justify-center text-solenoid-orange mb-6 font-bold group-hover:bg-solenoid-orange group-hover:text-black transition-colors">01</div>
                     <h3 class="text-xl font-bold text-white mb-3">Quantitative Alpha</h3>
                     <p class="text-solenoid-silver text-sm leading-relaxed pr-6">Algorithmic and systematic execution models engineered to capture microscopic and structural market mispricings.</p>
                 </div>
-                <div class="p-8 rounded bg-solenoid-panel border border-white/5 hover:border-solenoid-orange/60 transition-all group">
+                <div class="p-8 rounded bg-[#1C1C1F] border border-white/5 hover:border-solenoid-orange/60 transition-all group drop-shadow-sm">
                     <div class="w-10 h-10 rounded bg-solenoid-orange/10 flex items-center justify-center text-solenoid-orange mb-6 font-bold group-hover:bg-solenoid-orange group-hover:text-black transition-colors">02</div>
                     <h3 class="text-xl font-bold text-white mb-3">Growth Equity</h3>
                     <p class="text-solenoid-silver text-sm leading-relaxed pr-6">Direct capital deployment into late-stage technological infrastructure and companies exhibiting undeniable operational velocity.</p>
                 </div>
-                <div class="p-8 rounded bg-solenoid-panel border border-white/5 hover:border-solenoid-orange/60 transition-all group">
+                <div class="p-8 rounded bg-[#1C1C1F] border border-white/5 hover:border-solenoid-orange/60 transition-all group drop-shadow-sm">
                     <div class="w-10 h-10 rounded bg-solenoid-orange/10 flex items-center justify-center text-solenoid-orange mb-6 font-bold group-hover:bg-solenoid-orange group-hover:text-black transition-colors">03</div>
                     <h3 class="text-xl font-bold text-white mb-3">Risk Arbitrage</h3>
                     <p class="text-solenoid-silver text-sm leading-relaxed pr-6">Highly calculated, hedged strategies built to extract predictable yield out of complex corporate restructuring events.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="helix" class="py-24 bg-solenoid-black border-b border-white/10 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center justify-center space-x-2 mb-6 pt-4">
+                <span class="w-2 h-2 rounded-full bg-solenoid-silver shadow-[0_0_8px_rgba(196,196,204,0.8)] animate-pulse"></span>
+                <h2 class="text-xs font-bold uppercase tracking-widest text-solenoid-silver">Proprietary Infrastructure</h2>
+                <span class="w-2 h-2 rounded-full bg-solenoid-silver shadow-[0_0_8px_rgba(196,196,204,0.8)] animate-pulse"></span>
+            </div>
+            
+            <p class="text-4xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
+                Powered by <br class="md:hidden" />
+                
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-solenoid-silver to-gray-500 pr-4 helix-shimmer relative drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    HELIX STRAND
+                </span>
+            </p>
+            
+            <p class="max-w-3xl mx-auto text-lg text-solenoid-silver leading-relaxed bg-[#1C1C1F]/50 border border-white/5 p-8 rounded backdrop-blur-sm pr-12 pl-12">
+                Engineered as our proprietary, closed-loop API, <strong class="text-white">HELIX STRAND</strong> delivers uncompromising security and microscopic latency when executing complex quantitative sequences. By weaving together predictive data pipelines and strict risk-mitigation protocols, this metallic-tier architecture ensures high-performance returns on par with the most elite global funds.
+            </p>
         </div>
     </section>
 
@@ -123,15 +168,15 @@
             <form class="mt-10 text-left space-y-4 pt-4 pr-4 pl-4">
                 <div>
                     <label class="block text-xs uppercase font-semibold text-solenoid-silver mb-2">Entity or Individual Name</label>
-                    <input type="text" required class="w-full bg-solenoid-panel border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors pr-12 pl-4">
+                    <input type="text" required class="w-full bg-[#1C1C1F] border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors pr-12 pl-4">
                 </div>
                 <div>
                     <label class="block text-xs uppercase font-semibold text-solenoid-silver mb-2">Institutional Email</label>
-                    <input type="email" required class="w-full bg-solenoid-panel border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors pr-12 pl-4">
+                    <input type="email" required class="w-full bg-[#1C1C1F] border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors pr-12 pl-4">
                 </div>
                 <div>
                     <label class="block text-xs uppercase font-semibold text-solenoid-silver mb-2">Inquiry</label>
-                    <textarea rows="4" required class="w-full bg-solenoid-panel border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors pr-12 pl-4" placeholder="State allocation parameters..."></textarea>
+                    <textarea rows="4" required class="w-full bg-[#1C1C1F] border border-white/10 rounded p-3 text-white focus:outline-none focus:border-solenoid-orange text-sm transition-colors pr-12 pl-4" placeholder="State allocation parameters..."></textarea>
                 </div>
                 <button type="submit" class="w-full py-3 bg-white/5 text-white font-semibold rounded hover:bg-solenoid-orange hover:text-black transition-all text-sm tracking-wide border border-white/10 hover:border-solenoid-orange mt-8 shadow-sm">
                     Submit Request
@@ -144,7 +189,7 @@
         <div class="max-w-7xl mx-auto px-6 space-y-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <p>&copy; 2026 Solenoid Capital. All rights reserved.</p>
-                <p class="tracking-wide text-solenoid-orange font-bold pr-4">SECURITY // INTEGRITY // COMPLIANCE</p>
+                <p class="tracking-wide text-solenoid-orange font-bolddrop-shadow-sm pr-4">SECURITY // INTEGRITY // COMPLIANCE</p>
             </div>
             <p class="leading-relaxed opacity-60 pr-12">
                 <strong>Legal Disclaimer:</strong> Solenoid Capital is an investment management entity. Content on this website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security, investment product, or service. Past performance is no guarantee of future returns. Investments involve significant risks, including the potential loss of principal capital.
@@ -152,123 +197,94 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        const canvas = document.getElementById('solenoidHelixCanvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-
-        // Custom institutional palette for animation integrity
-        const SOLENOID_ORANGE = '#FF8000';
-        const SOLENOID_SILVER = '#C4C4CC';
-        const GREY_SHARD = '#505050'; // Grey shards from silver explosion
-
-        function setCanvasSize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = canvas.parentElement.offsetHeight;
-        }
-        window.addEventListener('resize', setCanvasSize);
-        setCanvasSize();
-
-        class Particle {
-            constructor(x, y, color, type) {
-                this.x = x; this.y = y; this.color = color; this.type = type; // 'silver' or 'orange'
-                this.size = type === 'orange' ? 2 : 1.5;
-                this.originalOpacity = type === 'orange' ? (0.2 + Math.random() * 0.5) : 0.8;
-                this.opacity = this.originalOpacity;
-                this.vx = 0; this.vy = 0;
+        // High-Performance Solenoid Capital Helix Strand Visualization Script (CONFINED ZONE)
+        
+        // Ensure script runs *after* the DOM loads, as it relies on specific IDs
+        window.addEventListener('load', () => {
+            const container = document.getElementById('helix-visualization-zone');
+            const canvas = document.getElementById('helix-viz-canvas');
+            
+            if (!container || !canvas) {
+                console.error("Critical: Solenoid Helix visualization zone missing.");
+                return;
             }
-            draw() {
-                ctx.globalAlpha = this.opacity; ctx.fillStyle = this.color;
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
-            }
-        }
 
-        // --- Sequence State Machine Variables ---
-        let particles = [];
-        let silverParticlesCount = 0; // Reference to silver helix particles
-        let sequencePhase = 0; // 0: Start, 1: Fast Rotate, 2: Explode, 3: Reverse slowly
-        let phaseTimer = 0; let baseRotationSpeed = 0.01; let currentRotation = 0;
+            // Create 3D Scene and Camera confined to the aspect ratio of the container
+            const scene = new THREE.Scene();
+            // Background is transparent to show the subtle black panel behind it
+            
+            // Perspective Camera tailored to show the localized visualization volume
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.z = 25; // Adjusted position for optimal viewing within the volume
+            
+            // WebGL Renderer, confined to the canvas within the zone
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            
+            // High-Performance DNA Helix Model (Realistic Silver Metallic)
+            
+            // Helix parameters derived for high-performance visual density
+            const segments = 100; // high segment count for a solid appearance
+            const baseStrandWidth = 1.0; 
+            const horizontalStrutWidth = 0.6;
+            const helixRadius = 5;
+            const helixHeight = 35; // LOCALIZED height within the volume
+            
+            // Metallic tier texture parameters (functional silver)
+            const strandMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0xD9D9E0, // Solenoid Silver (functional color)
+                metalness: 0.9,  // Realistic Metallic solid
+                roughness: 0.15, // Piercing shine
+                shading: THREE.SmoothShading
+            });
 
-        // Helix geometry variables (Start State)
-        const helixRadius = width * 0.12; const strandFrequency = 0.05;
-
-        // Initialize particles (Helix/Structure vs surrounding Orange)
-        function initSequence() {
-            particles = []; silverParticlesCount = 0; sequencePhase = 0; phaseTimer = 0; currentRotation = 0;
-            // Spawn surrounding Orange Particles: varying opaqueness
-            for (let i = 0; i < 150; i++) {
-                particles.push(new Particle(Math.random() * width, Math.random() * height, SOLENOID_ORANGE, 'orange'));
-            }
-            // Spawn Silver Helix Structure Particles (State: Start)
-            for (let y = height * 0.2; y < height * 0.8; y += 4) {
-                for (let j = 0; j < 2; j++) { // 2 strands
-                    const phaseOffset = j === 0 ? 0 : Math.PI;
-                    const h_x = width * 0.8 + Math.cos(y * strandFrequency + phaseOffset) * helixRadius;
-                    const silverPart = new Particle(h_x, y, SOLENOID_SILVER, 'silver'); silverPart.helixY = y; silverPart.helixPhaseOffset = phaseOffset;
-                    particles.push(silverPart); silverParticlesCount++;
-                }
-            }
-        }
-        initSequence();
-
-        // Sequence logic loops and phase triggers
-        function runSequence() {
-            ctx.clearRect(0, 0, width, height); phaseTimer++;
-            // Calculate current center point for Helix (central helix defined as y of silver parts)
-            let helixYStart = height * 0.2; let helixYEnd = height * 0.8;
-
-            // --- Phase State Management ---
-            if (sequencePhase === 0 && phaseTimer > 200) { sequencePhase = 1; phaseTimer = 0; } // Phase 0 -> 1
-            if (sequencePhase === 1 && phaseTimer > 150) { sequencePhase = 2; phaseTimer = 0; } // Phase 1 -> 2 (Explode!)
-            if (sequencePhase === 2 && phaseTimer > 50)  { sequencePhase = 3; phaseTimer = 0; } // Phase 2 -> 3 (Reverse)
-            if (sequencePhase === 3 && phaseTimer > 250) { initSequence(); } // Phase 3 loop back to Phase 0 (Self-loop)
-
-            let speedMultiplier = sequencePhase === 1 ? 5 : 1; // Faster rotation in Phase 1
-            currentRotation += baseRotationSpeed * speedMultiplier;
-
-            particles.forEach((p, index) => {
-                // Orange Particles: float and rotate surrounding center always close
-                if (p.type === 'orange') {
-                    p.vx += (width * 0.8 + Math.cos(currentRotation * 0.5 + p.y * 0.01) * width * 0.15 - p.x) * 0.005;
-                    p.vy += (height * 0.5 - p.y) * 0.005;
-                    // Grey shards added to Orange particles after Helix explosion (Phase 2)
-                    if (sequencePhase === 2) { p.size = 2.5; p.color = Math.random() > 0.3 ? SOLENOID_ORANGE : GREY_SHARD; } 
-                    else if (sequencePhase === 3 && phaseTimer < 150) { // Orange particles maintain grey shards during slow reverse structure
-                        p.color = Math.random() > 0.8 ? GREY_SHARD : SOLENOID_ORANGE; 
-                    } else if (sequencePhase === 0) { // Revert color loop
-                        p.color = SOLENOID_ORANGE; p.size = 2;
-                    }
+            // Geometry generation for a high-performance double helix array
+            const helixGroup = new THREE.Group();
+            
+            for (let j = 0; j < 2; j++) { // Generate 2 strands for Double Helix
+                const curve = new THREE.CatmullRomCurve3();
+                const angleOffset = j === 0 ? 0 : Math.PI; // Opposite positions
+                
+                for (let i = 0; i <= segments; i++) {
+                    const t = i / segments;
+                    const angle = t * Math.PI * 4.5 + angleOffset; // specific rotation sequence
+                    const x = Math.cos(angle) * helixRadius;
+                    const y = t * helixHeight - (helixHeight / 2); // local localized y position
+                    const z = Math.sin(angle) * helixRadius;
+                    curve.points.push(new THREE.Vector3(x, y, z));
                 }
                 
-                // Silver Helix Particles: primary structure and sequence target
-                if (p.type === 'silver') {
-                    if (sequencePhase < 2) { // Phases 0 & 1: Simple Rotation (Helix is formed)
-                        p.x = width * 0.8 + Math.cos(currentRotation + p.helixY * strandFrequency + p.helixPhaseOffset) * helixRadius * 1.3;
-                    } else if (sequencePhase === 2) { // Phase 2: Explosion! Helix structure destroys
-                        if (phaseTimer === 1) { // High velocity random Vectors away from center
-                            let helixCenterY = height * 0.5;
-                            p.vx = (p.x - width * 0.8) * 0.5 + (Math.random() - 0.5) * 30;
-                            p.vy = (p.y - helixCenterY) * 0.3 + (Math.random() - 0.5) * 30;
-                        }
-                        p.vx *= 0.95; p.vy *= 0.95; // apply friction
-                        // Helix particles become grey shards immediately
-                        p.color = GREY_SHARD; p.size = 2;
-                    } else if (sequencePhase === 3) { // Phase 3: Slowly Reverse structure
-                        let reverseGravityForce = phaseTimer * 0.0001; // Increase central force slowly
-                        let targetX = width * 0.8 + Math.cos(currentRotation + p.helixY * strandFrequency + p.helixPhaseOffset) * helixRadius * 1.3;
-                        p.vx += (targetX - p.x) * reverseGravityForce;
-                        p.vy += (p.helixY - p.y) * reverseGravityForce;
-                        // Slowly restore color: Grey shards slowly rotate back into silver
-                        if (phaseTimer > 150) { p.color = SOLENOID_SILVER; p.size = 1.5; }
-                        p.vx *= 0.98; p.vy *= 0.98; // apply friction
-                    }
-                }
-                p.x += p.vx; p.y += p.vy; p.draw();
-            });
-            requestAnimationFrame(runSequence);
-        }
-        runSequence();
-    </script>
+                // Realistic tube geometry for a solid metallic look
+                const tubeGeometry = new THREE.TubeGeometry(curve, segments, baseStrandWidth, 12, false);
+                const strandMesh = new THREE.Mesh(tubeGeometry, strandMaterial);
+                helixGroup.add(strandMesh);
+            }
 
-</body>
-</html>
+            // High-Performance Quantitative Particles (Localized)
+            
+            const particleCount = 200; // LOCALISED count for specific area
+            const particleGeometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+            const opacities = new Float32Array(particleCount);
+            
+            // Localized particle cloud around the central helix axis
+            const localizedParticleZoneRadius = helixRadius * 1.8;
+            
+            for (let i = 0; i < particleCount; i++) {
+                // local localised positions around the helix
+                const radius = (Math.random() * 0.8 + 0.2) * localizedParticleZoneRadius;
+                const angle = Math.random() * Math.PI * 2;
+                const localX = Math.cos(angle) * radius;
+                const localZ = Math.sin(angle) * radius;
+                const localY = (Math.random() * 0.9 - 0.45) * helixHeight; // local localised y position
+                
+                positions[i * 3] = localX;
+                positions[i * 3 + 1] = localY;
+                positions[i * 3 + 2] = localZ;
+                
+                // local localised opacity variation sequence
+                opacities[i] = Math.random() * 0.7 + 0.1; // base opacity localized variance
+            }
